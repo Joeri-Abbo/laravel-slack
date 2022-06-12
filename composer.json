@@ -1,0 +1,54 @@
+{
+  "name": "joeri-abbo/laravel-slack",
+  "description": "Laravel slack Package",
+  "type": "library",
+  "version": "dev-master",
+  "authors": [
+    {
+      "name": "Joeri Abbo",
+      "email": "joeri@joeri-abbo.com"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "require-dev": {
+    "ergebnis/composer-normalize": "^2.28",
+    "orchestra/testbench": "^7.3",
+    "pestphp/pest": "^1.21",
+    "phpunit/phpunit": "^9.5.10",
+    "squizlabs/php_codesniffer": "^3.6.2",
+    "vimeo/psalm": "^4.23"
+  },
+  "autoload": {
+    "psr-4": {
+      "JoeriAbbo\\Slack\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "JoeriAbbo\\Slack\\Tests\\": "tests"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "phpstan/extension-installer": true,
+      "composer/package-versions-deprecated": true,
+      "ergebnis/composer-normalize": true
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "JoeriAbbo\\Slack\\SlackPackageServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "@php ./vendor/bin/testbench package:discover --ansi"
+    ],
+    "test": "vendor/bin/pest"
+  }
+}
