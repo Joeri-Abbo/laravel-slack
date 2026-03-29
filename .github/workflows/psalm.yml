@@ -1,6 +1,6 @@
 name: Psalm
 
-on: ['push']
+on: ['push', 'pull_request']
 
 jobs:
   psalm:
@@ -9,8 +9,12 @@ jobs:
     steps:
       - name: Git checkout
         uses: actions/checkout@v6
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          coverage: none
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Run psalm
         run: ./vendor/bin/psalm
-
