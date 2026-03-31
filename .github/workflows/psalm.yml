@@ -15,6 +15,6 @@ jobs:
           php-version: "8.3"
           coverage: none
       - name: Install Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        run: composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Run psalm
         run: ./vendor/bin/psalm
