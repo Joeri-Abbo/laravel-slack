@@ -17,7 +17,7 @@ jobs:
           php-version: "8.3"
           coverage: none
       - name: Install Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        run: composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: normalize composer.json
         run: php vendor/bin/phpcbf
       - uses: stefanzweifel/git-auto-commit-action@v7

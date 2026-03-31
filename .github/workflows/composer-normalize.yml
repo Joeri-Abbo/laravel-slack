@@ -16,11 +16,10 @@ jobs:
         with:
           php-version: "8.3"
           coverage: none
+      - name: Install Dependencies
+        run: composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: normalize composer.json
-        run: |
-          composer config --no-plugins allow-plugins.ergebnis/composer-normalize true
-          composer require ergebnis/composer-normalize
-          composer normalize
+        run: composer normalize
       - uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: normalize composer.json
